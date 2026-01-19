@@ -106,7 +106,7 @@ function wapppress_enqueue_admin_assets() {
 			__( 'WappPress BASIC', 'wapppress-builds-android-app-for-website' ),
 			'manage_options',
 			$maPlgin,
-			array( $this, 'maker_basic_page' ),
+			array( $this, 'maker_settings_page' ),
 			$plgIcon
 		);
 
@@ -129,17 +129,17 @@ function wapppress_enqueue_admin_assets() {
 		__( 'Build Android App', 'wapppress-builds-android-app-for-website' ),
 		__( 'Build Android App', 'wapppress-builds-android-app-for-website' ),
 		'manage_options',
-		$maPlginBasic,
-		array( $this, 'maker_basic_page' )
+		$maSett,
+		array( $this, 'maker_settings_page' )
 	);
-	add_submenu_page(
+	/*add_submenu_page(
 		$maPlgin,
 		__( 'Build App', 'wapppress-builds-android-app-for-website' ),
 		__( 'Build App', 'wapppress-builds-android-app-for-website' ),
 		'manage_options',
 		$maSett,
 		array( $this, 'maker_settings_page' )
-	);
+	);*/
 	add_submenu_page(
 		$maPlgin,
 		__( 'Advance Settings', 'wapppress-builds-android-app-for-website' ),
@@ -177,13 +177,13 @@ function wapppress_enqueue_admin_assets() {
 		array( new instantappy_pwa_admin_setting(), 'instantappy_pwa_settings' )
 	);
 	// Hide it from left menu
-	add_action( 'admin_head', function () {
+	/*add_action( 'admin_head', function () {
 		echo '<style>
 			#toplevel_page_wapppressplugin .wp-submenu a[href$="page=wapppresssettings"] {
 				display:none !important;
 			}
 		</style>';
-	});
+	});*/
 	add_action( 'admin_head', function () {
 		echo '<style>
 			#toplevel_page_wapppressplugin .wp-submenu a[href$="page=advancesettings"] {
@@ -205,17 +205,6 @@ function wapppress_enqueue_admin_assets() {
 			}
 		</style>';
 	});
-	if(!$proactive)
-	{
-		add_submenu_page(
-		$maPlgin,
-		__( 'Why Pro?', 'wapppress-builds-android-app-for-website' ),
-		__( 'Why Pro?', 'wapppress-builds-android-app-for-website' ),
-		'manage_options',
-		$whyPro,
-		array( $this, 'maker_basic_page' ),
-		);
-	}
 	add_submenu_page(
 		$maPlgin,
 		__( 'FAQ', 'wapppress-builds-android-app-for-website' ),
@@ -224,6 +213,20 @@ function wapppress_enqueue_admin_assets() {
 		$maFaq,
 		array( $this, 'wapppress_faq' )
 	);
+	if(!$proactive)
+	{
+		$textWhyPro = "<span style='color: #C84C05;font-weight: 800;font-size: 16px;'>".__( 'Why Pro?', 'wapppress-builds-android-app-for-website' )."</span>";
+		add_submenu_page(
+		$maPlgin,
+		__( 'Why Pro?', 'wapppress-builds-android-app-for-website' ),
+		$textWhyPro,
+		'manage_options',
+		$whyPro,
+		array( $this, 'maker_basic_page' ),
+		);
+		
+	}
+	
 	// Remove duplicate submenu added by WP
 	add_action( 'admin_menu', function () use ( $maPlgin ) {
 		remove_submenu_page( $maPlgin, $maPlgin );
@@ -277,8 +280,8 @@ function wapppress_enqueue_admin_assets() {
 
 				<!-- BASIC VERSION -->
 				<div class="wapppress_box1">
-					<h3>
-						WappPress BASIC <span>(Free Trial)</span><br><br>
+					<h3><br>
+						WappPress BASIC <br><br><br>
 					</h3>
 
 					<ul>
@@ -288,7 +291,7 @@ function wapppress_enqueue_admin_assets() {
 							Monetize with Google AdMob Interstitial Ads
 							<b>(Limited Time)</b>
 						</li>
-						<li><b>Trial Android App – Valid for 15 Days</b></li>
+						<li><b>Android App Validity – 15 Days</b></li>
 						<li>Select a different home page for mobile app</li>
 						<li>Select different theme for website & mobile app</li>
 						<li>Customize launcher icon</li>
@@ -304,14 +307,14 @@ function wapppress_enqueue_admin_assets() {
 					</ul>
 
 					<a href="<?php echo esc_url( admin_url( 'admin.php?page=wapppresssettings' ) ); ?>">
-						<button>Start Free Trial</button>
+						<button>Build App</button>
 					</a>
 				</div>
 
 				<!-- PRO VERSION -->
 				<div class="wapppress_box1">
 					<h3>
-						<b>WappPress PRO – Lifetime Android App</b><br>
+						<b>WappPress PRO <br/>(Lifetime App Validity) </b><br>
 						<span>$24</span> <br>
 						<small>One-time payment • No monthly fees</small>
 					</h3>
@@ -325,7 +328,7 @@ function wapppress_enqueue_admin_assets() {
 							Monetize with Google AdMob Interstitial Ads
 							<b>(Unlimited)</b>
 						</li>
-						<li><b>Lifetime Android App (No Expiry)</b></li>
+						<li><b>Lifetime Validity of App (No Expiry)</b></li>
 						<li>Select a different home page for mobile app</li>
 						<li>Select different theme for website & mobile app</li>
 						<li>Customize launcher icon</li>
@@ -341,7 +344,7 @@ function wapppress_enqueue_admin_assets() {
 					</ul>
 
 					<a href="https://goo.gl/bcEb25" target="_blank">
-						<button>Upgrade to Lifetime Pro</button>
+						<button>Upgrade to Pro</button>
 					</a>
 
 					<p style="margin-top:8px; font-size:12px;">
@@ -356,7 +359,19 @@ function wapppress_enqueue_admin_assets() {
 	</div>
 </section>
 
-	
+	<section>
+			<div style='float:right;display:inline-block;font-family:"open_sansbold";font-size:12px;'>
+
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=wapppresspro' ) ); ?>"
+				   class="submit-build btn btn-info btn-lg"
+				   style="background-color:#C84C05; color:#fff; text-decoration:none;">
+
+					Already Have Pro? Click Here
+				</a>
+
+			</div>
+		</section>
+
 	
 
 	<!---=== Pro PopUp Div  Start ===--->
@@ -965,21 +980,24 @@ public function advance_settings_page()
 									<br/><br/>
 									<?php 
 									$recent = $this->get_recent_app_build();
-
+	
 									if ( $recent ) {
 
-										$app_id=$recent['app'];
-										$app_type=$recent['type'];
-										$expires=ceil((72 * HOUR_IN_SECONDS - (time() - $recent['created_at'])) / 3600);
+										$app_id=esc_html($recent['app']);
+										$app_type=esc_html($recent['type']);
+										$expires=ceil((72 * HOUR_IN_SECONDS - (time() - esc_html($recent['created_at']))) / 3600);
 										$is_active_show='display:block';
-										$apn_url = esc_url('https://author.wapppress.com/app/?app=' . urlencode($app_id).'&type=' . urlencode($app_type));
+										$apn_url =  'https://author.wapppress.com/app/?app=' . urlencode($app_id).'&type=' . urlencode($app_type);
 										$dw_url = esc_url('https://author.wapppress.com/app/download.php?app='. urlencode($app_id).'&type=' . urlencode($app_type));
 										$download_html='<a href="'.$dw_url.'"   class="btn btn-info-dwd  btn-lg submit-build"   role="button"> Download Your App</a>';
-										if ($app_type === 'apk')
+										
+										if ($app_type == 'apk')
 										{
 											$app_help_apk='display:block';
+											$app_help_aab='display:none';
 										}else{
 											$app_help_aab='display:block';
+											$app_help_apk='display:none';
 										}
 										
 									}else{
@@ -1007,7 +1025,7 @@ public function advance_settings_page()
 										<div id='dwnloakId' style="<?php echo  esc_attr($is_active_show);?>; float:right;text-align:center" >
 
 											<strong>Scan to Download your App:</strong><br/>
-											<img src="https://qrcode.tec-it.com/API/QRCode?data=<?php echo esc_url($apn_url);?>&backcolor=%23ffffff&size=small&quietzone=1&errorcorrection=H"  alt="QR Code" style="height:150px"/>
+											<img src="https://qrcode.tec-it.com/API/QRCode?data=<?php echo  rawurlencode($apn_url);?>&backcolor=%23ffffff&size=small&quietzone=1&errorcorrection=H"  alt="QR Code" style="height:150px"/>
 											<br/>Scan this QR code with your smartphone to download the app directory.
 										</div>
 									</div>

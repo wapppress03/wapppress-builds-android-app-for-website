@@ -96,10 +96,11 @@ $wapppress_current_page = ( isset($_GET['page']) && $wapppress_is_valid_nonce )
         onclick="window.location.href='<?php echo esc_url( admin_url('admin.php?page=wapppresspush&_wpnonce=' . $wapppress_tab_nonce) ); ?>';">
         Push Notification <span>(Message)</span>
     </button>
+	<button class="tablinks"
+			onclick="window.open('https://wapppress.freshdesk.com', '_blank', 'noopener');">
+		Help/Support
+	</button>
 
-    <button class="tablinks" onclick="window.location.href='https://wapppress.freshdesk.com';">
-        Help/Support
-    </button>
 </div>
 
 
