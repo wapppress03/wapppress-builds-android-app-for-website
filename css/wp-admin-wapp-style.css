@@ -1589,7 +1589,7 @@ section.wapppress_section {
     width: 525px;
     margin: 0 20px;
     background-image: url(../images/mobile.png);
-    height: 100%;
+    height: auto;
     background-repeat: no-repeat;
     background-size: contain;
     padding: 80px 50px 60px;
@@ -1648,7 +1648,7 @@ section.wapppress_section {
 }
 .wapppress_box1 ul li b {
     display: block;
-    font-family: "Raleway", serif;
+    font-family: 'open_sansregular';
     font-size: 19px;
     font-weight: 900;
     line-height: 27px;
@@ -1657,7 +1657,7 @@ section.wapppress_section {
 }
 .wapppress_box1 ul li small {
     display: block;
-    font-family: "Raleway", serif;
+    font-family: 'open_sansregular';
 	color:#000000;
     font-size: 12px;
     font-weight: 500;
@@ -1666,7 +1666,7 @@ section.wapppress_section {
 }
 .wapppress_box1 button {
     display: block;
-    font-family: "Raleway", serif;
+    font-family: 'open_sansregular';
     color: #FFFFFF;
     font-size: 29px;
     font-weight: 900;
@@ -1695,7 +1695,7 @@ section.build_app_section {
     background: #638C6D;
     border-radius: 15px;
     padding: 20px 20px;
-    width: 1024px;
+    width: 90%;
     display: table;
     margin: 0 auto;
 }

@@ -304,6 +304,9 @@ function wapppress_enqueue_admin_assets() {
 						<li>Ads free (no internal branding)</li>
 						<li>Real-time Android app build</li>
 						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
+						<p>&nbsp;</p>
 					</ul>
 
 					<a href="<?php echo esc_url( admin_url( 'admin.php?page=wapppresssettings' ) ); ?>">
